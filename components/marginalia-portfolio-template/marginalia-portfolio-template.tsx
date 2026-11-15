@@ -852,8 +852,8 @@ const CSS = `
 .mgn-cta-primary:hover{transform:translateY(-2px);background:color-mix(in oklab,var(--mgn-ink) 85%,#fff);box-shadow:0 12px 28px -6px rgba(0,0,0,.38);color:#fff}
 .mgn-cta-secondary{background:rgba(255,255,255,0.78);color:var(--fg);border:1.5px solid color-mix(in oklab,var(--mgn-ink) 20%,transparent);backdrop-filter:blur(8px)}
 .mgn-cta-secondary:hover{transform:translateY(-2px);border-color:var(--mgn-pen);color:var(--mgn-pen);background:#ffffff}
-.mgn-cover-note-left{position:absolute;left:-4%;top:28%;transform:rotate(-6deg);font-size:clamp(17px,1.8cqi,24px);color:var(--mgn-pen);display:flex;flex-direction:column;align-items:flex-start}
-@media (max-width: 900px){.mgn-cover-note-left{display:none}}
+.mgn-cover-note-left{position:absolute;right:calc(100% + clamp(16px, 2.5cqi, 36px));left:auto;top:12%;transform:rotate(-6deg);font-size:clamp(18px,2cqi,27px);color:var(--mgn-pen);display:flex;flex-direction:column;align-items:flex-end;white-space:nowrap;z-index:3;pointer-events:none}
+@media (max-width: 1080px){.mgn-cover-note-left{display:none}}
 .mgn-cover-meta{position:absolute;left:clamp(18px,5.2cqi,92px);right:clamp(18px,5.2cqi,92px);bottom:clamp(20px,3cqi,40px);display:flex;justify-content:space-between;align-items:flex-end;gap:16px;font-size:12px;letter-spacing:.06em;color:var(--muted)}
 .mgn-hint{display:flex;align-items:center;gap:6px;font-family:var(--mgn-hand);font-size:22px;letter-spacing:0;color:var(--mgn-pen)}
 .mgn-hint svg{width:22px;height:40px;animation:mgn-bob 2.2s ease-in-out infinite}
