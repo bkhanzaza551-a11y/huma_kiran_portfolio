@@ -827,8 +827,8 @@ const CSS = `
 /* cover */
 .mgn-cover{display:grid;place-items:center;overflow:hidden;padding-top:60px;touch-action:pan-y}
 .mgn-canvas{position:absolute;inset:0;width:100%;height:100%;max-width:none;pointer-events:none;z-index:3}
-.mgn-cover-in{position:relative;display:flex;flex-direction:column;align-items:center}
-.mgn-title{display:flex;white-space:nowrap;font-size:clamp(40px,12.5cqi,195px);color:var(--fg);margin:0;position:relative;z-index:1}
+.mgn-cover-in{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;max-width:min(1150px,94vw);margin:0 auto}
+.mgn-title{display:flex;white-space:nowrap;font-size:clamp(40px,11.5cqi,170px);color:var(--fg);margin:0;position:relative;z-index:1}
 .mgn-l{position:relative;display:inline-block;will-change:transform}
 .mgn-lc{display:inline-block;overflow:hidden;padding:.08em .015em .16em;margin:-.08em -.015em -.16em}
 .mgn-li{display:inline-block}
@@ -840,8 +840,20 @@ const CSS = `
 .mgn-star path{fill:var(--mgn-pen);stroke:none}
 .mgn-sig{position:absolute;right:-1%;top:-.55em;transform:rotate(-7deg);font-size:clamp(22px,3cqi,48px);white-space:nowrap;cursor:default;z-index:2}
 .mgn-sig-arrow{position:absolute;right:calc(100% - .55em);top:.5em;width:2.3em;height:auto;aspect-ratio:150/110;stroke-width:2.1}
-.mgn-pill-wrap{position:relative;margin-top:clamp(8px,1.2cqi,18px);align-self:flex-end;margin-right:6%}
-.mgn-pill{position:relative;display:inline-block;padding:.32em 1.1em .36em;border:1.5px solid currentColor;border-radius:999px;font-size:clamp(12px,1.35cqi,19px);font-weight:400;letter-spacing:.02em;color:var(--fg)}
+.mgn-cover-badges{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px;margin-top:clamp(10px,1.4cqi,20px);z-index:2}
+.mgn-cover-role{position:relative;display:inline-flex;align-items:center;padding:.36em 1.2em .4em;background:rgba(36,36,38,0.04);border:1.4px solid color-mix(in oklab,var(--mgn-ink) 22%,transparent);border-radius:999px;font-size:clamp(12px,1.25cqi,16px);font-weight:500;letter-spacing:.02em;color:var(--fg)}
+.mgn-cover-status{display:inline-flex;align-items:center;gap:6px;padding:.36em 1.1em .4em;background:rgba(34,197,94,0.08);border:1.2px solid rgba(34,197,94,0.3);border-radius:999px;font-size:clamp(11px,1.1cqi,14px);font-weight:600;color:#15803d}
+.mgn-status-dot-live{width:7px;height:7px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 3px rgba(34,197,94,0.25);animation:mgn-pulse 2s infinite}
+@keyframes mgn-pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.35);opacity:.7}}
+.mgn-cover-tagline{font-size:clamp(14px,1.35cqi,18px);max-width:54ch;margin:clamp(12px,1.5cqi,20px) auto 0;color:color-mix(in oklab,var(--mgn-ink) 76%,transparent);line-height:1.48;font-weight:400;text-wrap:balance}
+.mgn-cover-actions{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px;margin-top:clamp(16px,2cqi,26px);z-index:2}
+.mgn-cta-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:999px;font-size:clamp(13px,1.1cqi,15px);font-weight:600;text-decoration:none;cursor:pointer;transition:all .3s cubic-bezier(.2,.8,.2,1.2);font-family:var(--mgn-body)}
+.mgn-cta-primary{background:var(--mgn-ink);color:#ffffff;border:1.5px solid var(--mgn-ink);box-shadow:0 8px 22px -6px rgba(0,0,0,.28)}
+.mgn-cta-primary:hover{transform:translateY(-2px);background:color-mix(in oklab,var(--mgn-ink) 85%,#fff);box-shadow:0 12px 28px -6px rgba(0,0,0,.38);color:#fff}
+.mgn-cta-secondary{background:rgba(255,255,255,0.78);color:var(--fg);border:1.5px solid color-mix(in oklab,var(--mgn-ink) 20%,transparent);backdrop-filter:blur(8px)}
+.mgn-cta-secondary:hover{transform:translateY(-2px);border-color:var(--mgn-pen);color:var(--mgn-pen);background:#ffffff}
+.mgn-cover-note-left{position:absolute;left:-4%;top:28%;transform:rotate(-6deg);font-size:clamp(17px,1.8cqi,24px);color:var(--mgn-pen);display:flex;flex-direction:column;align-items:flex-start}
+@media (max-width: 900px){.mgn-cover-note-left{display:none}}
 .mgn-cover-meta{position:absolute;left:clamp(18px,5.2cqi,92px);right:clamp(18px,5.2cqi,92px);bottom:clamp(20px,3cqi,40px);display:flex;justify-content:space-between;align-items:flex-end;gap:16px;font-size:12px;letter-spacing:.06em;color:var(--muted)}
 .mgn-hint{display:flex;align-items:center;gap:6px;font-family:var(--mgn-hand);font-size:22px;letter-spacing:0;color:var(--mgn-pen)}
 .mgn-hint svg{width:22px;height:40px;animation:mgn-bob 2.2s ease-in-out infinite}
@@ -1582,11 +1594,12 @@ function Sheet({ info, className, flip, children }: { info: SheetInfo; className
 
 const ORBIT_TILT = (-18 * Math.PI) / 180
 
-function Cover({ info, title, name, role, year, location, docLabel, inkTrail }: {
-  info: SheetInfo; title: string; name: string; role: string; year: string; location: string; docLabel: string; inkTrail: boolean
+function Cover({ info, title, name, role, year, location, docLabel, inkTrail, onExplore }: {
+  info: SheetInfo; title: string; name: string; role: string; year: string; location: string; docLabel: string; inkTrail: boolean; onExplore: () => void
 }) {
   const chars = Array.from(title)
-  let orbitAt = title.toLowerCase().lastIndexOf("o")
+  let orbitAt = title.toLowerCase().indexOf("i")
+  if (orbitAt < 0) orbitAt = title.toLowerCase().lastIndexOf("a")
   if (orbitAt < 0) orbitAt = chars.length - 1
   const sparkle = React.useMemo(() => sparklePath(0, 0, 13), [])
   const heart = React.useMemo(() => heartPath(0, 0, 13), [])
@@ -1658,6 +1671,14 @@ function Cover({ info, title, name, role, year, location, docLabel, inkTrail }: 
     <Sheet info={info} className="mgn-cover">
       <canvas ref={canvasRef} className="mgn-canvas" aria-hidden="true" />
       <div className="mgn-cover-in">
+        <div className="mgn-cover-note-left mgn-hand" data-ink>
+          <span className="mgn-write">ground-up grit</span>
+          <svg viewBox="0 0 50 36" className="mgn-ink" aria-hidden="true" style={{ width: 44, height: 26, marginTop: 2 }}>
+            <path d="M6 8 C 18 22, 34 20, 44 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+            <path d="M36 20 L 44 24 L 38 30" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+          </svg>
+        </div>
+
         <h1 className="mgn-display mgn-title" aria-label={title + " — " + name + ", " + role}>
           {chars.map((c, i) => (
             <span key={i} className="mgn-l" aria-hidden="true">
@@ -1693,11 +1714,31 @@ function Cover({ info, title, name, role, year, location, docLabel, inkTrail }: 
             <span className="mgn-write">{name}</span>
           </span>
         </h1>
-        <div className="mgn-pill-wrap">
-          <span className="mgn-pill">
+
+        <div className="mgn-cover-badges">
+          <span className="mgn-cover-role">
             {role}
-            <PenMark kind="oval" seed={9} padX={12} padY={9} />
+            <PenMark kind="oval" seed={9} padX={8} padY={5} />
           </span>
+          <span className="mgn-cover-status">
+            <span className="mgn-status-dot-live" />
+            Available for Roles
+          </span>
+        </div>
+
+        <p className="mgn-cover-tagline">
+          Translating banking quality, operational leadership, and business workflows into scalable software &amp; centralized ERP systems.
+        </p>
+
+        <div className="mgn-cover-actions">
+          <button type="button" className="mgn-cta-btn mgn-cta-primary" onClick={onExplore}>
+            <span>Explore 7 Live Projects</span>
+            <span style={{ fontSize: "16px" }}>↓</span>
+          </button>
+          <a href="/Huma-Kiran-Resume.pdf" download="Huma-Kiran-Resume.pdf" className="mgn-cta-btn mgn-cta-secondary">
+            <span>Download CV</span>
+            <span style={{ fontSize: "16px" }}>↗</span>
+          </a>
         </div>
       </div>
       <div className="mgn-cover-meta">
@@ -2593,7 +2634,7 @@ export default function MarginaliaPortfolioTemplate(props: MarginaliaPortfolioTe
       {sheets.map(({ info, kind, i }) => {
         switch (kind) {
           case "cover":
-            return <Cover key={info.id} info={info} title={title} name={name} role={role} year={year} location={location} docLabel={docLabel} inkTrail={inkTrail} />
+            return <Cover key={info.id} info={info} title={title} name={name} role={role} year={year} location={location} docLabel={docLabel} inkTrail={inkTrail} onExplore={() => jump("projects")} />
           case "hello":
             return <Hello key={info.id} info={info} portrait={portrait} traits={traits} greeting={greeting} bio={bio} name={name} />
           case "education":
