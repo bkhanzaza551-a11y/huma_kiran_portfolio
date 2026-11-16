@@ -128,10 +128,11 @@ def build_pdf():
     ]
     
     contact_text = (
-        "<b>Email:</b> humakiran.work@gmail.com &nbsp;&nbsp;|&nbsp;&nbsp; "
-        "<b>Location:</b> Pakistan (Open to Remote & Onsite)<br/>"
-        "<b>LinkedIn:</b> linkedin.com/in/huma-kiran &nbsp;&nbsp;|&nbsp;&nbsp; "
-        "<b>Portfolio:</b> humakiran.dev"
+        "<b>Email:</b> huma.kiran.contact@gmail.com &nbsp;&nbsp;|&nbsp;&nbsp; "
+        "<b>WhatsApp:</b> +92 332 3425570 &nbsp;&nbsp;|&nbsp;&nbsp; "
+        "<b>Location:</b> Pakistan (Remote & Onsite)<br/>"
+        "<b>LinkedIn:</b> linkedin.com/in/huma-khan-090853375 &nbsp;&nbsp;|&nbsp;&nbsp; "
+        "<b>Portfolio:</b> huma-kiran-portfolio.vercel.app"
     )
     header_left.append(Spacer(1, 4))
     header_left.append(Paragraph(contact_text, contact_style))
@@ -313,9 +314,9 @@ def build_pdf():
             Paragraph("2019", date_style)
         ],
         [
-            Paragraph("<b>Intermediate Education</b>", body_style),
-            Paragraph("Higher Secondary School Certificate", body_style),
-            Paragraph("Foundational", date_style)
+            Paragraph("<b>Bachelor of Business Administration (BBA)</b>", body_style),
+            Paragraph("Allama Iqbal Open University (AIOU)", body_style),
+            Paragraph("Graduated", date_style)
         ]
     ]
     edu_table = Table(edu_data, colWidths=[3.2 * inch, 2.6 * inch, 1.6 * inch])

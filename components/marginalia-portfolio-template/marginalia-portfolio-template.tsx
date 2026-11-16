@@ -699,7 +699,7 @@ const DEFAULTS = {
     { title: "Kamyab Jawan Program Specialist", place: "JS Bank (Youth Entrepreneurship & Financial Enablement)", period: "2021 — 22" },
     { title: "Quality Assurance & Frontline Operations", place: "UBL — United Bank Limited", period: "2018 — 21", circled: true },
     { title: "Ground-Level Execution & Office Administration", place: "Private Firms & Offices (Practical Work Ethic)", period: "2016 — 18" },
-    { title: "Intermediate Education", place: "College Education (Started Career Independence at 18)", period: "Foundational" },
+    { title: "Bachelor of Business Administration (BBA)", place: "Allama Iqbal Open University (AIOU)", period: "Graduated", circled: true },
   ] as MgnEducation[],
   cvUrl: "/Huma-Kiran-Resume.pdf",
   cvNote: "official resume (PDF)",
