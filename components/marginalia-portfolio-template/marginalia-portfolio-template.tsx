@@ -742,7 +742,7 @@ const DEFAULTS = {
   ] as MgnFact[],
   factsNote: "core milestones & driving values",
   thanks: "Thank you for reviewing my journey",
-  email: "huma.kiran.contact@gmail.com",
+  email: "humakiran.rasheed@gmail.com",
   links: [
     { label: "LinkedIn", href: "https://www.linkedin.com/in/huma-khan-090853375" },
   ] as MgnLink[],

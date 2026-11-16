@@ -128,7 +128,7 @@ def build_pdf():
     ]
     
     contact_text = (
-        "<b>Email:</b> huma.kiran.contact@gmail.com &nbsp;&nbsp;|&nbsp;&nbsp; "
+        "<b>Email:</b> humakiran.rasheed@gmail.com &nbsp;&nbsp;|&nbsp;&nbsp; "
         "<b>WhatsApp:</b> +92 332 3425570 &nbsp;&nbsp;|&nbsp;&nbsp; "
         "<b>Location:</b> Pakistan (Remote & Onsite)<br/>"
         "<b>LinkedIn:</b> linkedin.com/in/huma-khan-090853375 &nbsp;&nbsp;|&nbsp;&nbsp; "
